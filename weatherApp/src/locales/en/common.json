@@ -15,5 +15,6 @@
     "error": "Error",
     "retry": "Retry",
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "historical": "Historical Weather"
   }

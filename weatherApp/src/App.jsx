@@ -32,6 +32,7 @@ import 'leaflet/dist/leaflet.css';
 import { ThemeContext } from './components/themeContext'; // Importa el contexto del tema
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import HistoricalWeather from './components/HistoricalWeather'; // Importa el componente de historial
 
 function Navigation() {
   const { t, i18n } = useTranslation(); // Obtén las funciones de traducción
@@ -49,6 +50,7 @@ function Navigation() {
     { text: t('common:weather'), path: '/weather' },
     { text: t('common:map'), path: '/map' },
     { text: t('common:about'), path: '/about' },
+    { text: t('common:historical'), path: '/historical' },
   ];
 
   return (
@@ -137,6 +139,7 @@ export default function App() {
             <Route path="/weather" element={<Weather />} />
             <Route path="/map" element={<Map />} />
             <Route path="/about" element={<About />} />
+            <Route path="/historical" element={<HistoricalWeather />} /> {/* Nueva ruta */}
           </Routes>
         </Container>
       </Layout>

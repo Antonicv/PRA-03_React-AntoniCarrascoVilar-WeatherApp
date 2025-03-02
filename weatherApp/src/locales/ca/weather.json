@@ -9,5 +9,9 @@
   "condition": "Condició",
   "forecast": "Pronòstic de 5 dies",
   "date": "Data",
-  "temp": "Temp"
+  "temp": "Temp",
+  "historical_title": "Dades Meteorològiques Històriques",
+  "select_date": "Seleccionar Data",  
+  "historical_data_for": "Dades Històriques per a"
+  
 }

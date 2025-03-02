@@ -9,5 +9,9 @@
   "condition": "Condición",
   "forecast": "Pronóstico de 5 días",
   "date": "Fecha",
-  "temp": "Temp"
+  "temp": "Temp",
+  "historical_title": "Datos Meteorológicos Históricos",
+  "select_date": "Seleccionar Fecha",
+  "historical_data_for": "Datos Históricos para"
+  
 }

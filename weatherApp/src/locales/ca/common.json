@@ -15,5 +15,6 @@
     "error": "Error",
     "retry": "Torna a intentar",
     "settings": "Configuració",
-    "logout": "Tancar sessió"
+    "logout": "Tancar sessió",
+     "historical": "Temps Històric"
   }

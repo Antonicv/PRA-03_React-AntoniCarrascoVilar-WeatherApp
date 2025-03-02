@@ -9,5 +9,9 @@
   "condition": "Condition",
   "forecast": "5-Day Forecast",
   "date": "Date",
-  "temp": "Temp"
+  "temp": "Temp",
+  "historical_title": "Historical Weather Data",
+  "select_date": "Select Date",
+  "select_date_placeholder": "Select a date",  
+  "historical_data_for": "Historical Data for"
 }

@@ -15,5 +15,6 @@
     "error": "Error",
     "retry": "Reintentar",
     "settings": "Configuración",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "historical": "Clima Histórico"
   }
