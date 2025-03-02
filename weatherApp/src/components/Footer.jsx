@@ -1,7 +1,9 @@
-
-import { Box, Typography, Container } from '@mui/material';
+// Footer.jsx
+import { Box, Typography, Container, useTheme } from '@mui/material';
 
 const Footer = () => {
+  const theme = useTheme();
+
   return (
     <Box
       component="footer"
@@ -9,19 +11,15 @@ const Footer = () => {
         py: 3,
         px: 2,
         mt: 'auto',
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'light'
-            ? theme.palette.grey[200]
-            : theme.palette.grey[800],
+        backgroundColor: theme.palette.background.paper,
       }}
     >
       <Container maxWidth="lg">
         <Typography variant="body1" align="center">
-          © {new Date().getFullYear()} Wheather App By:
+          © {new Date().getFullYear()} Weather App By:
         </Typography>
         <Typography variant="body2" align="center" color="text.secondary">
-         CIFO "La Violeta" |  Antoni Carrasco Vilar  <br />Desenvolupament d'Aplicacions amb Tecnologies Web
-         
+          CIFO "La Violeta" | Antoni Carrasco Vilar <br />Desenvolupament d'Aplicacions amb Tecnologies Web
         </Typography>
       </Container>
     </Box>

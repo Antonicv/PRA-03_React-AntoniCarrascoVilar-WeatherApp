@@ -1,15 +1,16 @@
+// Home.jsx
 import React from 'react';
-import { useTranslation } from 'react-i18next'; // Hook para traducciones
-import { Container, Typography, Button, Grid, Card, CardContent, Box } from '@mui/material';
-import WeatherIcon from '@mui/icons-material/WbSunny'; // Icono de clima
-import MapIcon from '@mui/icons-material/Map'; // Icono de mapa
+import { useTranslation } from 'react-i18next';
+import { Container, Typography, Button, Grid, Card, CardContent, Box, useTheme } from '@mui/material';
+import WeatherIcon from '@mui/icons-material/WbSunny';
+import MapIcon from '@mui/icons-material/Map';
 
 export default function Home() {
-  const { t } = useTranslation(['common', 'home']); // Usa los namespaces 'common' y 'home'
+  const { t } = useTranslation(['common', 'home']);
+  const theme = useTheme();
 
   return (
     <Container>
-      {/* Título y Descripción */}
       <Box sx={{ textAlign: 'center', my: 5 }}>
         <Typography variant="h2" gutterBottom>
           {t('home:title')}
@@ -22,11 +23,9 @@ export default function Home() {
         </Typography>
       </Box>
 
-      {/* Características Destacadas */}
       <Grid container spacing={4} sx={{ my: 4 }}>
-        {/* Clima */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={{ backgroundColor: theme.palette.background.paper }}>
             <CardContent sx={{ textAlign: 'center' }}>
               <WeatherIcon sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
               <Typography variant="h5" gutterBottom>
@@ -42,9 +41,8 @@ export default function Home() {
           </Card>
         </Grid>
 
-        {/* Mapa */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={{ backgroundColor: theme.palette.background.paper }}>
             <CardContent sx={{ textAlign: 'center' }}>
               <MapIcon sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
               <Typography variant="h5" gutterBottom>

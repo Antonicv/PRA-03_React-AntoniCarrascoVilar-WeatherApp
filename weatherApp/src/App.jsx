@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// App.jsx
+import React, { useState, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import {
   AppBar,
@@ -28,12 +29,14 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/700.css"; 
 import ReactCountryFlag from 'react-country-flag';
 import 'leaflet/dist/leaflet.css';
-
-
+import { ThemeContext } from './components/themeContext'; // Importa el contexto del tema
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function Navigation() {
   const { t, i18n } = useTranslation(); // Obtén las funciones de traducción
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext); // Obtén el estado del tema y la función para cambiarlo
 
   // Cambiar idioma
   const changeLanguage = (event) => {
@@ -86,6 +89,16 @@ function Navigation() {
               <MenuItem value="ca"><ReactCountryFlag countryCode="ES-CT" svg style={{ marginRight: 8 }} />Català</MenuItem>
             </Select>
           </FormControl>
+
+          {/* Botón para cambiar el tema */}
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="toggle theme"
+            onClick={toggleTheme}
+          >
+            {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
 
