@@ -1,0 +1,13 @@
+{
+  "title": "Clima",
+  "search_placeholder": "Introduce una ciudad",
+  "search_button": "Buscar",
+  "loading": "Cargando...",
+  "error": "Error al obtener los datos del clima. Inténtalo de nuevo.",
+  "current_weather": "Clima actual en {{city}}",
+  "temperature": "Temperatura",
+  "condition": "Condición",
+  "forecast": "Pronóstico de 5 días",
+  "date": "Fecha",
+  "temp": "Temp"
+}

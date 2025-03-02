@@ -1,0 +1,19 @@
+{
+    "welcome": "Benvingut",
+    "home": "Inici",
+    "weather": "Temps",
+    "map": "Mapa",
+    "about": "Sobre nosaltres",
+    "language": "Idioma",
+    "search": "Cercar",
+    "temperature": "Temperatura",
+    "condition": "Condició",
+    "forecast": "Pronòstic",
+    "date": "Data",
+    "description": "Descripció",
+    "loading": "Carregant...",
+    "error": "Error",
+    "retry": "Torna a intentar",
+    "settings": "Configuració",
+    "logout": "Tancar sessió"
+  }

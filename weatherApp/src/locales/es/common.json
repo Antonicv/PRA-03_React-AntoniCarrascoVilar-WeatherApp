@@ -1,0 +1,19 @@
+{
+    "welcome": "Bienvenido",
+    "home": "Inicio",
+    "weather": "Clima",
+    "map": "Mapa",
+    "about": "Acerca de",
+    "language": "Idioma",
+    "search": "Buscar",
+    "temperature": "Temperatura",
+    "condition": "Condición",
+    "forecast": "Pronóstico",
+    "date": "Fecha",
+    "description": "Descripción",
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  }

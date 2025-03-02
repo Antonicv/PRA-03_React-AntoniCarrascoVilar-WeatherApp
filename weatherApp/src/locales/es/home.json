@@ -1,0 +1,11 @@
+{
+  "title": "Bienvenido a Weather Tracker",
+  "subtitle": "Tu aplicación para el clima en tiempo real y mapas interactivos",
+  "description": "Mantente informado sobre el clima en cualquier ciudad y explora ubicaciones con nuestro mapa interactivo.",
+  "feature_weather": "Clima en Tiempo Real",
+  "feature_weather_description": "Obtén las condiciones climáticas actuales y pronósticos de 5 días para cualquier ciudad.",
+  "feature_map": "Mapa Interactivo",
+  "feature_map_description": "Explora ubicaciones y consulta información meteorológica en un mapa interactivo.",
+  "cta_weather": "Consultar el Clima",
+  "cta_map": "Explorar el Mapa"
+}

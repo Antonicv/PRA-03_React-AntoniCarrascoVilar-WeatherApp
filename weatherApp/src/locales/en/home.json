@@ -1,0 +1,11 @@
+{
+  "title": "Welcome to Weather Tracker",
+  "subtitle": "Your go-to app for real-time weather and interactive maps",
+  "description": "Stay informed about the weather in any city and explore locations with our interactive map.",
+  "feature_weather": "Real-Time Weather",
+  "feature_weather_description": "Get current weather conditions and 5-day forecasts for any city.",
+  "feature_map": "Interactive Map",
+  "feature_map_description": "Explore locations and view weather information on an interactive map.",
+  "cta_weather": "Check the Weather",
+  "cta_map": "Explore the Map"
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from 'react-i18next'; // Importa el hook de traducción
 
 const containerStyle = {
   width: "100%",
@@ -12,6 +13,7 @@ const containerStyle = {
 };
 
 export default function Weather() {
+  const { t } = useTranslation(['common', 'weather']); // Usa los namespaces 'common' y 'weather'
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState([]);
@@ -23,24 +25,19 @@ export default function Weather() {
     setLoading(true);
     setError("");
     try {
-
-     const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
+      const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 
       const currentWeatherResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
       );
       setWeather(currentWeatherResponse.data);
-      console.log(currentWeatherResponse);
 
       const forecastResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
       );
-      setForecast(
-        forecastResponse.data.list.filter((_, index) => index % 8 === 0)
-      );
-        console.log(forecastResponse);
+      setForecast(forecastResponse.data.list.filter((_, index) => index % 8 === 0));
     } catch (err) {
-      setError("Failed to fetch weather data. Please try again.");
+      setError(t('weather:error')); // Usa la traducción para el mensaje de error
     } finally {
       setLoading(false);
     }
@@ -52,42 +49,41 @@ export default function Weather() {
 
   return (
     <div>
-      <h1>Weather Tracker</h1>
+      <h1>{t('weather:title')}</h1> {/* Título traducido */}
       <div>
         <input
           type="text"
-          placeholder="Enter city"
+          placeholder={t('weather:search_placeholder')} // Placeholder traducido
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />{" "}
-        <button onClick={fetchWeatherData}>Search</button>
+        <button onClick={fetchWeatherData}>{t('weather:search_button')}</button> {/* Botón traducido */}
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && <p>{t('weather:loading')}</p>} {/* Mensaje de carga traducido */}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {weather && (
         <div style={containerStyle}>
-          <h2>Current Weather in {weather.name}</h2>
+          <h2>{t('weather:current_weather', { city: weather.name })}</h2> {/* Ciudad dinámica */}
           <p>
-            Temperature:{" "}
+            {t('weather:temperature')}:{" "}
             <span style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-              {" "}
               {weather.main.temp}
             </span>
             °C
           </p>
-          <p>Condition: {weather.weather[0].description}</p>
+          <p>{t('weather:condition')}: {weather.weather[0].description}</p>
         </div>
       )}
       {forecast.length > 0 && (
         <div style={containerStyle}>
-          <h2>5-Day Forecast</h2>
+          <h2>{t('weather:forecast')}</h2> {/* Pronóstico traducido */}
           {forecast.map((day, index) => (
             <div key={index}>
-              <p>Date: {new Date(day.dt_txt).toLocaleDateString()}</p>
+              <p>{t('weather:date')}: {new Date(day.dt_txt).toLocaleDateString()}</p>
               <p>
-                Temp:<b>{day.main.temp}</b> °C
+                {t('weather:temp')}: <b>{day.main.temp}</b> °C
               </p>
-              <p>Condition: {day.weather[0].description}</p>
+              <p>{t('weather:condition')}: {day.weather[0].description}</p>
               <br />
             </div>
           ))}
@@ -96,5 +92,3 @@ export default function Weather() {
     </div>
   );
 }
-
-

@@ -1,0 +1,13 @@
+{
+  "title": "Temps",
+  "search_placeholder": "Introdueix una ciutat",
+  "search_button": "Cercar",
+  "loading": "Carregant...",
+  "error": "Error en obtenir les dades del temps. Torna-ho a provar.",
+  "current_weather": "Temps actual a {{city}}",
+  "temperature": "Temperatura",
+  "condition": "Condició",
+  "forecast": "Pronòstic de 5 dies",
+  "date": "Data",
+  "temp": "Temp"
+}

@@ -1,0 +1,19 @@
+{
+    "welcome": "Welcome",
+    "home": "Home",
+    "weather": "Weather",
+    "map": "Map",
+    "about": "About",
+    "language": "Language",
+    "search": "Search",
+    "temperature": "Temperature",
+    "condition": "Condition",
+    "forecast": "Forecast",
+    "date": "Date",
+    "description": "Description",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "settings": "Settings",
+    "logout": "Logout"
+  }

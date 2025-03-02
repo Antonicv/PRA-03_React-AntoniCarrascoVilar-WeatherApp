@@ -1,0 +1,7 @@
+{
+  "title": "Mapa Interactiu",
+  "search_placeholder": "Introdueix una ciutat",
+  "search_button": "Cercar",
+  "loading": "Carregant...",
+  "error": "Error en obtenir les dades del temps. Torna-ho a provar."
+}

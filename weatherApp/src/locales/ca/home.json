@@ -1,0 +1,11 @@
+{
+  "title": "Benvingut a Weather Tracker",
+  "subtitle": "La teva aplicació per al temps en temps real i mapes interactius",
+  "description": "Mantingues informat sobre el temps a qualsevol ciutat i explora ubicacions amb el nostre mapa interactiu.",
+  "feature_weather": "Temps en Temps Real",
+  "feature_weather_description": "Obtén les condicions climàtiques actuals i pronòstics de 5 dies per a qualsevol ciutat.",
+  "feature_map": "Mapa Interactiu",
+  "feature_map_description": "Explora ubicacions i consulta informació meteorològica en un mapa interactiu.",
+  "cta_weather": "Consultar el Temps",
+  "cta_map": "Explorar el Mapa"
+}
