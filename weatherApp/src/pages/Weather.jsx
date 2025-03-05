@@ -10,6 +10,7 @@ const containerStyle = {
   borderRadius: "8px",
   boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
   backgroundColor: "#f9f9f9",
+  color: "#333",
 };
 
 export default function Weather() {
