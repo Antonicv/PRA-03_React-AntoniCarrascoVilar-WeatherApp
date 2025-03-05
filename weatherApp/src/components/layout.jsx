@@ -1,19 +1,30 @@
 // Layout.jsx
-import { Box, ThemeProvider } from '@mui/material';
+import { Box, ThemeProvider, GlobalStyles } from '@mui/material';
 import Footer from './Footer';
 import { useContext } from 'react';
 import { ThemeContext } from './themeContext.jsx';
 
 const Layout = ({ children }) => {
-  const { theme } = useContext(ThemeContext); // Obtén el tema del contexto
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <ThemeProvider theme={theme}> {/* Aplica el tema */}
+    <ThemeProvider theme={theme}>
+      {/* Estilos globales para el body */}
+      <GlobalStyles
+        styles={{
+          body: {
+            color: theme.palette.text.primary,
+            backgroundColor: theme.palette.background.paper,
+            // margin: 0, 
+          }
+        }}
+      />
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
+          
         }}
       >
         <Box component="main" sx={{ flexGrow: 1 }}>

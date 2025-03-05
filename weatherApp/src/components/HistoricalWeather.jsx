@@ -31,6 +31,7 @@ const HistoricalWeather = () => {
       setWeatherData(response.data);
     } catch (err) {
       setError(t('weather:error'));
+      console.error("Error fetching historical weather data:", err);
     } finally {
       setLoading(false);
     }
