@@ -1,10 +1,9 @@
 {
   "title": "Mapa Interactiu",
   "search_placeholder": "Introdueix una ciutat",
-  "search_button": "Cercar",
   "loading": "Carregant...",
   "error": "Error en obtenir les dades del temps. Torna-ho a provar.",
-  "search": "Buscar",
+  "search": "Cercar",
   "city_not_found": "Ciutat no trobada",
   "search_error": "Error en la cerca"
 }

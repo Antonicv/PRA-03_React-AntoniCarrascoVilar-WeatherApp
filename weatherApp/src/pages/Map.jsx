@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { useTranslation } from 'react-i18next';
+import { Container, Box } from '@mui/material';
 import 'leaflet/dist/leaflet.css';
 
 // Fix para los iconos de Leaflet
@@ -48,7 +49,7 @@ export default function MapView() {
       const data = await response.json();
       
       if (data.length === 0) {
-        setError(t('city_not_found'));
+        setError(t('map:city_not_found'));
         return;
       }
 
@@ -66,27 +67,83 @@ export default function MapView() {
   };
 
   return (
-    <div className="map-container">
+    <Container 
+      maxWidth={false} 
+      sx={{ 
+        height: '100vh',
+        width: '100%',
+        p: 0,
+        position: 'relative',
+        top: 66,
+        marginBottom: 6
+      }}
+    >
       {/* Barra de búsqueda */}
-      <div className="search-bar">
+      <Box
+        sx={{
+          position: 'absolute',
+          top: -80,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1000,
+          width: '100%',
+          maxWidth: 500,
+          bgcolor: 'background.paper',
+          borderRadius: 1,
+          boxShadow: 3,
+          p: 1
+        }}
+      >
         <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            placeholder={t('search_placeholder')}
-          />
-          <button type="submit">{t('search')}</button>
+          <Box display="flex" gap={1}>
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder={t('map:search_placeholder')}
+              style={{
+                flex: 1,
+                padding: '12px',
+                border: '1px solid #ddd',
+                borderRadius: '4px',
+                fontSize: '16px'
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                padding: '12px 24px',
+                background: '#007bff',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              {t('map:search')}
+            </button>
+          </Box>
         </form>
-        {error && <div className="error-message">{error}</div>}
-      </div>
+        {error && (
+          <Box
+            sx={{
+              color: 'error.main',
+              mt: 1,
+              p: 1,
+              bgcolor: 'error.light',
+              borderRadius: 1
+            }}
+          >
+            {error}
+          </Box>
+        )}
+      </Box>
 
       {/* Mapa */}
       <MapContainer
         center={[coords.lat, coords.lng]}
         zoom={13}
-        ref={mapRef}
-        className="map"
+        style={{ height: '100%', width: '100%' }}
       >
         <MapUpdater coords={coords} />
         <TileLayer
@@ -97,63 +154,6 @@ export default function MapView() {
           <Popup>{cityName}</Popup>
         </Marker>
       </MapContainer>
-
-      <style jsx>{`
-        .map-container {
-          height: 100vh;
-          width: 100%;
-          position: relative;
-        }
-        
-        .search-bar {
-          position: absolute;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 1000;
-          width: 90%;
-          max-width: 500px;
-        }
-        
-        form {
-          display: flex;
-          gap: 10px;
-          background: white;
-          padding: 10px;
-          border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        input {
-          flex: 1;
-          padding: 12px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 16px;
-        }
-        
-        button {
-          padding: 12px 24px;
-          background: #007bff;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-        
-        .error-message {
-          color: #dc3545;
-          margin-top: 8px;
-          padding: 8px;
-          background: #ffeef0;
-          border-radius: 4px;
-        }
-        
-        .map {
-          height: 100%;
-          width: 100%;
-        }
-      `}</style>
-    </div>
+    </Container>
   );
 }

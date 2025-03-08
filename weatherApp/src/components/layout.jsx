@@ -24,10 +24,11 @@ const Layout = ({ children }) => {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
+          width: '100%',
           
         }}
       >
-        <Box component="main" sx={{ flexGrow: 1 }}>
+        <Box component="main" sx={{ flexGrow: 1, width: '100%', maxWidth: 'none ! important'}}>
           {children}
         </Box>
         <Footer />
