@@ -1,4 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+// Código del componente MapView
+// ------------------------------------------------------------
+// Este componente muestra un mapa interactivo utilizando react-leaflet y permite buscar ciudades para centrar el mapa en ellas.
+
+// Importa las librerías necesarias
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { useTranslation } from 'react-i18next';
@@ -26,13 +31,14 @@ function MapUpdater({ coords }) {
   return null;
 }
 
+// Componente principal del mapa
 export default function MapView() {
   const { t } = useTranslation();
   const [coords, setCoords] = useState({ lat: 41.3851, lng: 2.1734 });
   const [searchText, setSearchText] = useState('');
   const [error, setError] = useState('');
   const [cityName, setCityName] = useState('Barcelona');
-  const mapRef = useRef();
+
 
   // Buscar coordenadas
   const handleSearch = async (e) => {

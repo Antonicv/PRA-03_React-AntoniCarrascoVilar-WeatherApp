@@ -1,7 +1,13 @@
+// Este componente muestra el clima actual y el pronóstico de una ciudad
+// usando la API de OpenWeatherMap.
+
+// Importa los hooks necesarios
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from 'react-i18next'; // Importa el hook de traducción
 
+// Define un estilo para los contenedores
 const containerStyle = {
   width: "100%",
   margin: "50px auto", // Adds 50px margin to the top and centers horizontally
@@ -12,7 +18,7 @@ const containerStyle = {
   backgroundColor: "#f9f9f9",
   color: "#333",
 };
-
+// Define el componente Weather
 export default function Weather() {
   const { t } = useTranslation(['common', 'weather']); // Usa los namespaces 'common' y 'weather'
   const [city, setCity] = useState("");
@@ -20,19 +26,20 @@ export default function Weather() {
   const [forecast, setForecast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  // Define una función para obtener los datos del clima
   const fetchWeatherData = async () => {
     if (!city) return;
     setLoading(true);
     setError("");
     try {
+      // Usa la variable de entorno para la API key
       const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
-
+      // Realiza dos peticiones a la API de OpenWeatherMap
       const currentWeatherResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
       );
       setWeather(currentWeatherResponse.data);
-
+      // Filtra los datos para obtener solo un pronóstico diario
       const forecastResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
       );
@@ -43,7 +50,7 @@ export default function Weather() {
       setLoading(false);
     }
   };
-
+  // Usa el hook useEffect para cargar los datos por defecto
   useEffect(() => {
     fetchWeatherData();
   }, []); // Fetch default data on load if needed

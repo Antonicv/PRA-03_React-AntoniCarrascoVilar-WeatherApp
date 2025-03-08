@@ -1,4 +1,9 @@
 // HistoricalWeather.jsx
+// Componente para mostrar el tiempo histórico
+// ------------------------------------------------------------
+// Este componente permite buscar datos meteorológicos históricos para una fecha concreta.
+
+// Importa los hooks necesarios
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -6,28 +11,29 @@ import { TextField, Button, Typography, Container, Box } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
 
+// Define el componente HistoricalWeather
 const HistoricalWeather = () => {
   const { t } = useTranslation(['common', 'weather']);
   const [date, setDate] = useState(dayjs()); // Fecha seleccionada
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
+  // Define una función para obtener los datos meteorológicos históricos
   const fetchHistoricalWeather = async () => {
     if (!date) return;
     setLoading(true);
     setError('');
-
+    // Realiza una petición a la API de OpenWeatherMap
     try {
       const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY; // Asegúrate de tener esta variable en tu .env
       const lat = 41.3851; // Latitud de Barcelona (puedes hacerlo dinámico)
       const lon = 2.1734; // Longitud de Barcelona (puedes hacerlo dinámico)
       const timestamp = date.unix(); // Convertir la fecha a timestamp
-
+       // Realiza una petición a la API de OpenWeatherMap 
       const response = await axios.get(
         `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${timestamp}&appid=${apiKey}&units=metric`
       );
-
+      // Actualiza el estado con los datos recibidos
       setWeatherData(response.data);
     } catch (err) {
       setError(t('weather:error'));
@@ -36,7 +42,7 @@ const HistoricalWeather = () => {
       setLoading(false);
     }
   };
-
+  // Devuelve el componente
   return (
     <Container>
       <Box sx={{ my: 4 }}>
@@ -85,5 +91,5 @@ const HistoricalWeather = () => {
     </Container>
   );
 };
-
+// Exporta el componente HistoricalWeather
 export default HistoricalWeather;

@@ -1,4 +1,7 @@
-// themeContext.jsx
+//Definir el contexto del tema y el proveedor del tema
+
+//imports:
+
 import React, { createContext, useState, useMemo, useEffect } from 'react';
 import { createTheme } from '@mui/material/styles';
 
@@ -30,6 +33,7 @@ export const lightTheme = createTheme({
     fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
   },
 });
+
 
 export const darkTheme = createTheme({
   palette: {
@@ -66,7 +70,7 @@ export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('theme') === 'dark'
   );
-
+  // Cambiar el tema
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
@@ -74,9 +78,9 @@ export const ThemeProvider = ({ children }) => {
       return newMode;
     });
   };
-
+  // Seleccionar el tema
   const theme = useMemo(() => (isDarkMode ? darkTheme : lightTheme), [isDarkMode]);
-
+  // Aplicar el tema
   return (
     <ThemeContext.Provider value={{ theme, isDarkMode, toggleTheme }}>
       {children}

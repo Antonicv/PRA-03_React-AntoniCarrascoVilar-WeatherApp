@@ -1,6 +1,18 @@
+// Código del componente App
+// // App.jsx
+// // Componente principal de la aplicación
+// // ------------------------------------------------------------
+// // Este componente define la estructura de la aplicación y las rutas de navegación.
 
+
+
+// Importa las librerías necesarias
 import React, { useState, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+// Hook para traducciones
+import { useTranslation } from 'react-i18next'; 
+// Importa los componentes de Material-UI  
 import {
   AppBar,
   Toolbar,
@@ -17,22 +29,25 @@ import {
   MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useTranslation } from 'react-i18next'; // Hook para traducciones
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+// Importa las páginas de la aplicación
 import Weather from './pages/Weather';
 import Home from "./pages/Home";
 import Map from "./pages/Map";
 import About from "./pages/About";
 import Layout from './components/layout';
-import './i18next'; // Importa la configuración de i18next
+import HistoricalWeather from './components/HistoricalWeather';
+import ReactCountryFlag from 'react-country-flag';
+// Importa la configuración de i18next
+import './i18next'; 
 import "@fontsource/roboto"; 
 import "@fontsource/roboto/400.css"; 
 import "@fontsource/roboto/700.css"; 
-import ReactCountryFlag from 'react-country-flag';
 import 'leaflet/dist/leaflet.css';
-import { ThemeContext } from './components/themeContext'; // Importa el contexto del tema
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import HistoricalWeather from './components/HistoricalWeather'; // Importa el componente de historial
+
+// Importa el contexto del tema
+import { ThemeContext } from './components/themeContext'; 
 
 function Navigation() {
   const { t, i18n } = useTranslation(); // Obtén las funciones de traducción
@@ -127,7 +142,7 @@ function Navigation() {
     </>
   );
 }
-
+// Componente principal de la aplicación
 export default function App() {
   return (
     <Router>
