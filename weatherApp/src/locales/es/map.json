@@ -3,5 +3,7 @@
   "search_placeholder": "Introduce una ciudad",
   "search_button": "Buscar",
   "loading": "Cargando...",
-  "error": "Error al obtener los datos del clima. Inténtalo de nuevo."
-}
+  "error": "Error al obtener los datos del clima. Inténtalo de nuevo.",
+  "search": "Buscar",
+  "city_not_found": "Ciudad no encontrada",
+  "search_error": "Error en la búsqueda"}

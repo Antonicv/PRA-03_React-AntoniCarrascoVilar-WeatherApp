@@ -1,115 +1,159 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import 'leaflet/dist/leaflet.css';
 
+// Fix para los iconos de Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+});
 
-// Componente para actualizar la vista del mapa
-function ChangeView({ center, zoom }) {
+// Componente para actualizar el mapa
+function MapUpdater({ coords }) {
   const map = useMap();
-  map.setView(center, zoom);
+
+  useEffect(() => {
+    if (coords?.lat && coords?.lng) {
+      map.flyTo([coords.lat, coords.lng], 13, { animate: true });
+    }
+  }, [coords, map]);
+
   return null;
 }
 
-// Estilo personalizado para el ícono del marcador
-const customIcon = new L.Icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-});
-
 export default function MapView() {
-  const { t } = useTranslation(['common', 'map']);
-  const [city, setCity] = useState('Barcelona');
-  const [weatherData, setWeatherData] = useState(null);
-  const [position, setPosition] = useState([41.41682744893083, 2.1340861825957607]);
-  const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
+  const [coords, setCoords] = useState({ lat: 41.3851, lng: 2.1734 });
+  const [searchText, setSearchText] = useState('');
   const [error, setError] = useState('');
+  const [cityName, setCityName] = useState('Barcelona');
   const mapRef = useRef();
 
-  // const fetchWeatherData = async () => {
-  //   if (!city) return;
-  //   setLoading(true);
-  //   setError('');
-  //   try {
-  //     const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-  //     if (!apiKey) {
-  //       setError(t('map:missing_api_key'));
-  //       setLoading(false);
-  //       return;
-  //     }
-  //     const response = await axios.get(
-  //       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-  //     );
-  //     setWeatherData(response.data);
-  //     setPosition([response.data.coord.lat, response.data.coord.lon]);
-  //   } catch (err) {
-  //     setError(t('map:error'));
-  //     setPosition([41.41682744893083, 2.1340861825957607]); // Reset to default position
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  const handleSearch = (e) => {
+  // Buscar coordenadas
+  const handleSearch = async (e) => {
     e.preventDefault();
-    fetchWeatherData();
+    setError('');
+    
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchText)}`
+      );
+      
+      if (!response.ok) throw new Error('API Error');
+      
+      const data = await response.json();
+      
+      if (data.length === 0) {
+        setError(t('city_not_found'));
+        return;
+      }
+
+      const firstResult = data[0];
+      setCoords({
+        lat: parseFloat(firstResult.lat),
+        lng: parseFloat(firstResult.lon)
+      });
+      setCityName(firstResult.display_name || searchText);
+      
+    } catch (err) {
+      setError(t('search_error'));
+      console.error('Geocoding error:', err);
+    }
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      {/* Formulario de búsqueda */}
-      <form onSubmit={handleSearch} style={{ marginBottom: 16, textAlign: 'center', padding: '16px 0' }}>
-        <input
-          type="text"
-          placeholder={t('map:search_placeholder')}
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          style={{ padding: '8px', width: '300px', marginRight: '8px' }}
-        />
-        <button type="submit" style={{ padding: '8px 16px' }}>
-          {t('map:search_button')}
-        </button>
-      </form>
+    <div className="map-container">
+      {/* Barra de búsqueda */}
+      <div className="search-bar">
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder={t('search_placeholder')}
+          />
+          <button type="submit">{t('search')}</button>
+        </form>
+        {error && <div className="error-message">{error}</div>}
+      </div>
 
       {/* Mapa */}
       <MapContainer
-        center={position}
+        center={[coords.lat, coords.lng]}
         zoom={13}
-        style={{ height: '80%', width: '100%' }}
-        whenCreated={mapInstance => mapRef.current = mapInstance}
+        ref={mapRef}
+        className="map"
       >
-        <ChangeView center={position} zoom={13} />
+        <MapUpdater coords={coords} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; OpenStreetMap'
         />
-
-        {weatherData && (
-          <Marker
-            position={[weatherData.coord.lat, weatherData.coord.lon]}
-            icon={customIcon}
-          >
-            <Popup>
-              <div>
-                <h3>{weatherData.name}</h3>
-                <p>
-                  {t('common:temperature')}: {weatherData.main.temp}°C
-                </p>
-                <p>
-                  {t('common:condition')}: {weatherData.weather[0].description}
-                </p>
-              </div>
-            </Popup>
-          </Marker>
-        )}
+        <Marker position={[coords.lat, coords.lng]}>
+          <Popup>{cityName}</Popup>
+        </Marker>
       </MapContainer>
 
-      {/* Mensajes de estado */}
-      {loading && <p style={{ textAlign: 'center' }}>{t('map:loading')}</p>}
-      {error && <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>}
+      <style jsx>{`
+        .map-container {
+          height: 100vh;
+          width: 100%;
+          position: relative;
+        }
+        
+        .search-bar {
+          position: absolute;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1000;
+          width: 90%;
+          max-width: 500px;
+        }
+        
+        form {
+          display: flex;
+          gap: 10px;
+          background: white;
+          padding: 10px;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        input {
+          flex: 1;
+          padding: 12px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+        
+        button {
+          padding: 12px 24px;
+          background: #007bff;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        .error-message {
+          color: #dc3545;
+          margin-top: 8px;
+          padding: 8px;
+          background: #ffeef0;
+          border-radius: 4px;
+        }
+        
+        .map {
+          height: 100%;
+          width: 100%;
+        }
+      `}</style>
     </div>
   );
 }
