@@ -1,16 +1,18 @@
- //About.jsx
-// Página de información sobre la aplicación
+//About.jsx
+// Pàgina d'informació sobre l'aplicació
 // ------------------------------------------------------------
-// Este componente muestra información sobre la aplicación
- 
- // Importa los hooks de React, de traducción y de Material-UI
-import React from 'react';
-import { useTranslation } from 'react-i18next'; // Importa el hook de traducción
-import { Container, Typography, Box } from '@mui/material';
-// Define el componente About
-export default function About() {
-  const { t } = useTranslation(['common', 'about']); // Usa los namespaces 'common' y 'about'
+// Aquest component mostra informació sobre l'aplicació
 
+// Importa els hooks de React, de traducció i de Material-UI
+import React from 'react';
+import { useTranslation } from 'react-i18next'; // Importa el hook de traducció
+import { Container, Typography, Box } from '@mui/material';
+
+// Defineix el component About
+export default function About() {
+  const { t } = useTranslation(['common', 'about']); // Utilitza els namespaces 'common' i 'about'
+
+  // Renderitza el component
   return (
     <Container>
       <Box sx={{ my: 4 }}>

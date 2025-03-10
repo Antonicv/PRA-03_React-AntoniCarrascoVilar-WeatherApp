@@ -1,18 +1,14 @@
-// Código del componente App
-// // App.jsx
-// // Componente principal de la aplicación
-// // ------------------------------------------------------------
-// // Este componente define la estructura de la aplicación y las rutas de navegación.
+// Codi del component App
+// ------------------------------------------------------------
+// Aquest component defineix l'estructura de l'aplicació i les rutes de navegació.
 
-
-
-// Importa las librerías necesarias
+// Importa les llibreries necessàries
 import React, { useState, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-// Hook para traducciones
+// Hook per a traduccions
 import { useTranslation } from 'react-i18next'; 
-// Importa los componentes de Material-UI  
+// Importa els components de Material-UI  
 import {
   AppBar,
   Toolbar,
@@ -31,34 +27,35 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-// Importa las páginas de la aplicación
+// Importa les pàgines de l'aplicació
 import Weather from './pages/Weather';
 import Home from "./pages/Home";
 import Map from "./pages/Map";
 import About from "./pages/About";
 import Layout from './components/layout';
 import ReactCountryFlag from 'react-country-flag';
-// Importa la configuración de i18next
+// Importa la configuració de i18next
 import './i18next'; 
 import "@fontsource/roboto"; 
 import "@fontsource/roboto/400.css"; 
 import "@fontsource/roboto/700.css"; 
 import 'leaflet/dist/leaflet.css';
 
-// Importa el contexto del tema
+// Importa el context del tema
 import { ThemeContext } from './components/themeContext'; 
 
+// Component de navegació
 function Navigation() {
-  const { t, i18n } = useTranslation(); // Obtén las funciones de traducción
+  const { t, i18n } = useTranslation(); // Obtén les funcions de traducció
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext); // Obtén el estado del tema y la función para cambiarlo
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext); // Obtén l'estat del tema i la funció per canviar-lo
 
-  // Cambiar idioma
+  // Canviar idioma
   const changeLanguage = (event) => {
     i18n.changeLanguage(event.target.value);
   };
 
-  // Elementos del menú
+  // Elements del menú
   const menuItems = [
     { text: t('common:home'), path: '/' },
     { text: t('common:weather'), path: '/weather' },
@@ -66,12 +63,13 @@ function Navigation() {
     { text: t('common:about'), path: '/about' },
   ];
 
+  // Renderitza el component
   return (
     <>
-      {/* Barra de navegación */}
+      {/* Barra de navegació */}
       <AppBar position="static">
         <Toolbar>
-          {/* Botón del menú hamburguesa */}
+          {/* Botó del menú hamburguesa */}
           <IconButton
             edge="start"
             color="inherit"
@@ -82,12 +80,12 @@ function Navigation() {
             <MenuIcon />
           </IconButton>
 
-          {/* Título de la aplicación */}
+          {/* Títol de l'aplicació */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {t('common:welcome')}
           </Typography>
 
-          {/* Selector de idioma */}
+          {/* Selector d'idioma */}
           <FormControl variant="standard" sx={{ minWidth: 120, color: 'white' }}>
             <InputLabel id="language-select-label" sx={{ color: 'white' }}>
               {t('common:language')}
@@ -105,7 +103,7 @@ function Navigation() {
             </Select>
           </FormControl>
 
-          {/* Botón para cambiar el tema */}
+          {/* Botó per canviar el tema */}
           <IconButton
             edge="end"
             color="inherit"
@@ -140,8 +138,10 @@ function Navigation() {
     </>
   );
 }
-// Componente principal de la aplicación
+
+// Component principal de l'aplicació
 export default function App() {
+  // Renderitza el component
   return (
     <Router>
       <Layout>

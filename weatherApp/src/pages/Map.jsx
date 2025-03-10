@@ -1,8 +1,8 @@
-// Código del componente MapView
+// Codi del component MapView
 // ------------------------------------------------------------
-// Este componente muestra un mapa interactivo utilizando react-leaflet y permite buscar ciudades para centrar el mapa en ellas.
+// Aquest component mostra un mapa interactiu utilitzant react-leaflet i permet buscar ciutats per centrar el mapa en elles.
 
-// Importa las librerías necesarias
+// Importa les llibreries necessàries
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { Container, Box } from '@mui/material';
 import 'leaflet/dist/leaflet.css';
 
-// Fix para los iconos de Leaflet
+// Fix per als icones de Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
@@ -18,28 +18,29 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
 });
 
-// Componente para actualizar el mapa
+// Component per actualitzar el mapa
 function MapUpdater({ coords }) {
-  const map = useMap();
+  const map = useMap(); // Utilitza el hook useMap per obtenir l'instància del mapa
 
+  // Utilitza el hook useEffect per actualitzar el mapa quan les coordenades canvien
   useEffect(() => {
     if (coords?.lat && coords?.lng) {
-      map.flyTo([coords.lat, coords.lng], 13, { animate: true });
+      map.flyTo([coords.lat, coords.lng], 13, { animate: true }); // Centra el mapa en les noves coordenades
     }
-  }, [coords, map]);
+  }, [coords, map]); // El hook es torna a executar quan les coordenades o el mapa canvien
 
-  return null;
+  return null; // Aquest component no renderitza res
 }
 
-// Componente principal del mapa
+// Component principal del mapa
 export default function MapView() {
-  const { t } = useTranslation();
-  const [coords, setCoords] = useState({ lat: 41.3851, lng: 2.1734 });
-  const [searchText, setSearchText] = useState('');
-  const [error, setError] = useState('');
-  const [cityName, setCityName] = useState('Barcelona');
+  const { t } = useTranslation(); // Utilitza el hook de traducció
+  const [coords, setCoords] = useState({ lat: 41.3851, lng: 2.1734 }); // Estat per a les coordenades
+  const [searchText, setSearchText] = useState(''); // Estat per al text de cerca
+  const [error, setError] = useState(''); // Estat per als errors
+  const [cityName, setCityName] = useState('Barcelona'); // Estat per al nom de la ciutat
 
-  // Buscar coordenadas
+  // Funció per buscar coordenades
   const handleSearch = async (e) => {
     e.preventDefault();
     setError('');
@@ -71,6 +72,7 @@ export default function MapView() {
     }
   };
 
+  // Renderitza el component
   return (
     <Container 
       maxWidth={false} 
@@ -83,7 +85,7 @@ export default function MapView() {
         marginBottom: 6
       }}
     >
-      {/* Barra de búsqueda */}
+      {/* Barra de cerca */}
       <Box
         sx={{
           position: 'absolute',

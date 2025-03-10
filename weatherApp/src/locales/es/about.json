@@ -2,9 +2,9 @@
   "title": "Acerca de Nosotros",
   "description": "Esta aplicación es una herramienta de seguimiento del clima y ubicación diseñada para proporcionar información meteorológica en tiempo real y mapas interactivos. Es parte de un proyecto desarrollado en el CIFO La Violeta, un centro de formación profesional que promueve la innovación y la tecnología.",
   "how_it_works": "Cómo Funciona",
-  "how_it_works_description": "La aplicación utiliza la API de OpenWeatherMap para obtener datos meteorológicos en tiempo real y pronósticos. Los usuarios pueden buscar cualquier ciudad para obtener las condiciones climáticas actuales y un pronóstico de 5 días. El mapa interactivo permite explorar ubicaciones y ver información meteorológica.",
+  "how_it_works_description": "La aplicación utiliza la API de OpenWeatherMap para obtener datos meteorológicos en tiempo real y pronósticos. Los usuarios pueden buscar cualquier ciudad para obtener las condiciones climáticas actuales y un pronóstico de 5 días. El mapa interactivo permite explorar ubicaciones y ver información meteorológica. Además, la aplicación ofrece datos históricos y alertas meteorológicas.",
   "technologies": "Tecnologías Utilizadas",
-  "technologies_description": "Esta aplicación está construida con React para el frontend, Material-UI para el diseño y i18next para soporte multilingüe. Utiliza Axios para las solicitudes a la API y se integra con OpenWeatherMap para los datos meteorológicos.",
+  "technologies_description": "Esta aplicación está construida con React para el frontend, Material-UI para el diseño y i18next para soporte multilingüe. Utiliza Axios para las solicitudes a la API y se integra con OpenWeatherMap para los datos meteorológicos. También emplea Leaflet para los mapas interactivos y Day.js para el manejo de fechas.",
   "cifo": "Sobre el CIFO La Violeta",
   "cifo_description": "El CIFO La Violeta es un centro de formación profesional ubicado en Barcelona, Cataluña. Ofrece cursos en tecnología, programación e innovación digital, fomentando el desarrollo de habilidades prácticas y el crecimiento profesional."
 }

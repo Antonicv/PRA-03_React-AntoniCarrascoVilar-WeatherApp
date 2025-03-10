@@ -1,0 +1,32 @@
+.containerStyle {
+  width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fbfbfb;
+  color: #333;
+}
+
+.centerStyle {
+  text-align: center;
+}
+
+.forecastContainerStyle {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.forecastBoxStyle {
+  width: 30%;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: center;
+}

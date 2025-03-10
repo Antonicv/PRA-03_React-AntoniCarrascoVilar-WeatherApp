@@ -2,9 +2,9 @@
   "title": "About Us",
   "description": "This application is a weather and location tracking tool designed to provide real-time weather information and interactive maps. It is part of a project developed at CIFO La Violeta, a vocational training center that promotes innovation and technology.",
   "how_it_works": "How It Works",
-  "how_it_works_description": "The app uses the OpenWeatherMap API to fetch real-time weather data and forecasts. Users can search for any city to get current weather conditions and a 5-day forecast. The interactive map allows users to explore locations and view weather information.",
+  "how_it_works_description": "The app uses the OpenWeatherMap API to fetch real-time weather data and forecasts. Users can search for any city to get current weather conditions and a 5-day forecast. The interactive map allows users to explore locations and view weather information. Additionally, the app offers historical data and weather alerts.",
   "technologies": "Technologies Used",
-  "technologies_description": "This app is built with React for the frontend, Material-UI for styling, and i18next for multilingual support. It uses Axios for API requests and integrates with OpenWeatherMap for weather data.",
+  "technologies_description": "This app is built with React for the frontend, Material-UI for styling, and i18next for multilingual support. It uses Axios for API requests and integrates with OpenWeatherMap for weather data. It also employs Leaflet for interactive maps and Day.js for date handling.",
   "cifo": "About CIFO La Violeta",
   "cifo_description": "CIFO La Violeta is a vocational training center located in Barcelona, Catalonia. It offers courses in technology, programming, and digital innovation, fostering the development of practical skills and professional growth."
 }

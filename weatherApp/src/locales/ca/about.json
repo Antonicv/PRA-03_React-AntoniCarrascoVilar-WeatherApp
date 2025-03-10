@@ -2,9 +2,9 @@
   "title": "Sobre Nosaltres",
   "description": "Aquesta aplicació és una eina de seguiment del temps i ubicació dissenyada per proporcionar informació meteorològica en temps real i mapes interactius. Forma part d'un projecte desenvolupat al CIFO La Violeta, un centre de formació professional que promou la innovació i la tecnologia.",
   "how_it_works": "Com Funciona",
-  "how_it_works_description": "L'aplicació utilitza l'API d'OpenWeatherMap per obtenir dades meteorològiques en temps real i pronòstics. Els usuaris poden buscar qualsevol ciutat per obtenir les condicions climàtiques actuals i un pronòstic de 5 dies. El mapa interactiu permet explorar ubicacions i veure informació meteorològica.",
+  "how_it_works_description": "L'aplicació utilitza l'API d'OpenWeatherMap per obtenir dades meteorològiques en temps real i pronòstics. Els usuaris poden buscar qualsevol ciutat per obtenir les condicions climàtiques actuals i un pronòstic de 5 dies. El mapa interactiu permet explorar ubicacions i veure informació meteorològica. A més, l'aplicació ofereix dades històriques i alertes meteorològiques.",
   "technologies": "Tecnologies Utilitzades",
-  "technologies_description": "Aquesta aplicació està construïda amb React per al frontend, Material-UI per al disseny i i18next per a suport multilingüe. Utilitza Axios per a les sol·licituds a l'API i s'integra amb OpenWeatherMap per a les dades meteorològiques.",
+  "technologies_description": "Aquesta aplicació està construïda amb React per al frontend, Material-UI per al disseny i i18next per a suport multilingüe. Utilitza Axios per a les sol·licituds a l'API i s'integra amb OpenWeatherMap per a les dades meteorològiques. També empra Leaflet per als mapes interactius i Day.js per al maneig de dates.",
   "cifo": "Sobre el CIFO La Violeta",
   "cifo_description": "El CIFO La Violeta és un centre de formació professional situat a Barcelona, Catalunya. Ofereix cursos en tecnologia, programació i innovació digital, fomentant el desenvolupament d'habilitats pràctiques i el creixement professional."
 }

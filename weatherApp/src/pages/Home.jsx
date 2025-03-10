@@ -1,20 +1,21 @@
 // Home.jsx
-// Página principal de la aplicación
+// Pàgina principal de l'aplicació
 // ------------------------------------------------------------
-// Esta página muestra la página principal de la aplicación con información general y enlaces a otras páginas.
+// Aquesta pàgina mostra la pàgina principal de l'aplicació amb informació general i enllaços a altres pàgines.
 
-// Importa los hooks de React y de traducción
+// Importa els hooks de React i de traducció
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container, Typography, Button, Grid, Card, CardContent, Box, useTheme } from '@mui/material';
 import WeatherIcon from '@mui/icons-material/WbSunny';
 import MapIcon from '@mui/icons-material/Map';
 
-// Define el componente Home
+// Defineix el component Home
 export default function Home() {
   const { t } = useTranslation(['common', 'home']);
   const theme = useTheme();
-// Devuelve el componente
+
+  // Renderitza el component
   return (
     <Container>
       <Box sx={{ textAlign: 'center', my: 5 }}>
