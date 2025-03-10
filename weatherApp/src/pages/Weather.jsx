@@ -18,6 +18,13 @@ const containerStyle = {
   backgroundColor: "#f9f9f9",
   color: "#333",
 };
+const centerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center", // Centra horizontalmente
+  justifyContent: "center", // Centra verticalmente
+  textAlign: "center", // Centra el texto
+};
 // Define el componente Weather
 export default function Weather() {
   const { t } = useTranslation(['common', 'weather']); // Usa los namespaces 'common' y 'weather'
@@ -57,13 +64,14 @@ export default function Weather() {
 
   return (
     <div>
-      <h1>{t('weather:title')}</h1> {/* Título traducido */}
-      <div>
+      <h1 style={centerStyle}>{t('weather:title')}</h1> {/* Título traducido */}
+      <div style={centerStyle}>
         <input
           type="text"
           placeholder={t('weather:search_placeholder')} // Placeholder traducido
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          
         />{" "}
         <button onClick={fetchWeatherData}>{t('weather:search_button')}</button> {/* Botón traducido */}
       </div>

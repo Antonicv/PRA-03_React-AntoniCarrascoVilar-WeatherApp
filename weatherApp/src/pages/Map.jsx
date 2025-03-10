@@ -39,7 +39,6 @@ export default function MapView() {
   const [error, setError] = useState('');
   const [cityName, setCityName] = useState('Barcelona');
 
-
   // Buscar coordenadas
   const handleSearch = async (e) => {
     e.preventDefault();

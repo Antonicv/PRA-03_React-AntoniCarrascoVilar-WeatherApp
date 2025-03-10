@@ -37,7 +37,6 @@ import Home from "./pages/Home";
 import Map from "./pages/Map";
 import About from "./pages/About";
 import Layout from './components/layout';
-import HistoricalWeather from './components/HistoricalWeather';
 import ReactCountryFlag from 'react-country-flag';
 // Importa la configuración de i18next
 import './i18next'; 
@@ -65,7 +64,6 @@ function Navigation() {
     { text: t('common:weather'), path: '/weather' },
     { text: t('common:map'), path: '/map' },
     { text: t('common:about'), path: '/about' },
-    { text: t('common:historical'), path: '/historical' },
   ];
 
   return (
@@ -121,7 +119,7 @@ function Navigation() {
 
       {/* Menú desplegable */}
       <Drawer
-        anchor="right"
+        anchor="left"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
@@ -154,7 +152,6 @@ export default function App() {
             <Route path="/weather" element={<Weather />} />
             <Route path="/map" element={<Map />} />
             <Route path="/about" element={<About />} />
-            <Route path="/historical" element={<HistoricalWeather />} /> {/* Nueva ruta */}
           </Routes>
         </Container>
       </Layout>

@@ -2,7 +2,7 @@
 
 //imports:
 
-import React, { createContext, useState, useMemo, useEffect } from 'react';
+import React, { createContext, useState, useMemo} from 'react';
 import { createTheme } from '@mui/material/styles';
 
 // Definir los temas claro y oscuro
@@ -10,14 +10,14 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#2A3F5F', // Azul marino oscuro (elegante y profesional)
-      light: '#3D5675',
-      dark: '#1A2A40',
+      main: '#2A3F5F', // Azul marino oscuro 
+      light: '#3D5675',// Azul marino claro
+      dark: '#1A2A40',// Azul marino oscuro
     },
     secondary: {
-      main: '#7A4F6B', // Borgoña suave (toque sofisticado)
-      light: '#8C637D',
-      dark: '#683B56',
+      main: '#7A4F6B', // Borgoña suave 
+      light: '#8C637D', // Borgoña claro
+      dark: '#683B56', // Borgoña oscuro
     },
     background: {
       default: '#F8F9FA', // Blanco ligeramente cálido
@@ -39,7 +39,7 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#6AB7C6', // Verde azulado suave (moderno y fresco)
+      main: '#6AB7C6', // Verde azulado suave 
       light: '#8ECCD6',
       dark: '#4A9DAB',
     },
