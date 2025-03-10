@@ -1,22 +1,21 @@
 // Layout.jsx
-// Este componente define la estructura de la aplicación y se encarga de aplicar el tema y los estilos globales.
+// Aquest component defineix l'estructura de l'aplicació i s'encarrega d'aplicar el tema i els estils globals.
 // ----------------------------------------------------------------
 
-
-// Importa los componentes necesarios de Material-UI
-
+// Importa els components necessaris de Material-UI
 import { Box, ThemeProvider, GlobalStyles } from '@mui/material';
 import Footer from './Footer';
 import { useContext } from 'react';
 import { ThemeContext } from './themeContext.jsx';
 
-// Define el componente Layout
+// Defineix el component Layout
 const Layout = ({ children }) => {
-  const { theme } = useContext(ThemeContext);
-  // Devuelve la estructura de la aplicación
+  const { theme } = useContext(ThemeContext); // Utilitza el context del tema
+
+  // Renderitza el component
   return (
     <ThemeProvider theme={theme}>
-      {/* Estilos globales para el body */}
+      {/* Estils globals per al body */}
       <GlobalStyles
         styles={{
           body: {
@@ -32,7 +31,6 @@ const Layout = ({ children }) => {
           flexDirection: 'column',
           minHeight: '100vh',
           width: '100%',
-          
         }}
       >
         <Box component="main" sx={{ flexGrow: 1, width: '100%', maxWidth: 'none ! important'}}>
@@ -43,5 +41,6 @@ const Layout = ({ children }) => {
     </ThemeProvider>
   );
 };
-// Exporta el componente Layout
+
+// Exporta el component Layout
 export default Layout;

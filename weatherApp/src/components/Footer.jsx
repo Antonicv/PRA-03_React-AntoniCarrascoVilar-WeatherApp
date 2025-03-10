@@ -1,19 +1,15 @@
 // Footer.jsx
-//componente Footer
-// Este componente muestra el pie de página de la aplicación  con información sobre el autor y el curso.
+// Aquest component mostra el peu de pàgina de l'aplicació amb informació sobre l'autor i el curs.
 // ----------------------------------------------------------------
 
-
-
-// Importa los componentes necesarios de Material-UI
-
+// Importa els components necessaris de Material-UI
 import { Box, Typography, Container, useTheme } from '@mui/material';
 
-// Define el componente Footer
+// Defineix el component Footer
 const Footer = () => {
-  // Obtiene el tema actual
-  const theme = useTheme();
-  // Devuelve el pie de página
+  const theme = useTheme(); // Obtén el tema actual
+
+  // Renderitza el component
   return (
     <Box
       component="footer"
@@ -35,5 +31,6 @@ const Footer = () => {
     </Box>
   );
 };
-// Exporta el componente Footer
+
+// Exporta el component Footer
 export default Footer;
